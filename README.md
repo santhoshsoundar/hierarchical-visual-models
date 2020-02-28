@@ -1,3 +1,7 @@
+# Hierarchical Visual Models
+
+A project that explore ways to improve accessibility and seek to build alternative ways to visualize hierarchical data visualizations.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
