@@ -1,23 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <h2>Hierarchical Visual Models</h2>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus.
+          Amet volutpat consequat mauris nunc congue nisi vitae suscipit. A
+          iaculis at erat pellentesque. Dictum at tempor commodo ullamcorper a
+          lacus. Consequat mauris nunc congue nisi vitae suscipit. Non odio
+          euismod lacinia at. Orci nulla pellentesque dignissim enim sit amet
+          venenatis. Ultricies mi eget mauris pharetra.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
     </div>
   );
