@@ -1,10 +1,5 @@
-.App-header {
-  padding: var(--content-padding);
-  background-color: var(--content-background);
-  border-radius: var(--content-border-rad);
-  margin-top: 1em;
-}
-
-.App-header h2 {
-  line-height: 1em;
+.App {
+  display: grid;
+  grid-template-columns: var(--content-width) var(--sidebar-width);
+  grid-gap: 1em;
 }

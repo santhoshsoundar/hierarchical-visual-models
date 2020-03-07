@@ -1,22 +1,59 @@
-import React from "react";
+import React, { Component } from "react";
 import "./App.css";
+import HeaderComponent from "./Header/HeaderComponent";
+import SidebarComponent from "./Sidebar/SidebarComponent";
+import ContentComponent from "./Content/ContentComponent";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h2>Hierarchical Visual Models</h2>
-        <p>
-          Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus.
-          Amet volutpat consequat mauris nunc congue nisi vitae suscipit. A
-          iaculis at erat pellentesque. Dictum at tempor commodo ullamcorper a
-          lacus. Consequat mauris nunc congue nisi vitae suscipit. Non odio
-          euismod lacinia at. Orci nulla pellentesque dignissim enim sit amet
-          venenatis. Ultricies mi eget mauris pharetra.
-        </p>
-      </header>
-    </div>
-  );
+class App extends Component {
+  state = {
+    data: {},
+    idLoaded: false,
+    nodeSubtreeData: null,
+    error: null
+  };
+
+  componentDidMount() {
+    fetch(`${process.env.PUBLIC_URL || ""}/data/poi_sequences.json`)
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            isLoaded: true,
+            data: result.report.data
+          });
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      );
+  }
+
+  updateNodeSubtree = treeData => {
+    this.setState({
+      nodeSubtreeData: treeData
+    });
+  };
+
+  render() {
+    const { data, error, isLoaded, nodeSubtreeData } = this.state;
+    return (
+      <div className="App">
+        <div>
+          <HeaderComponent />
+          <ContentComponent
+            data={data}
+            isLoaded={isLoaded}
+            error={error}
+            updateNodeSubtree={this.updateNodeSubtree}
+          />
+        </div>
+        <SidebarComponent subTreeData={nodeSubtreeData} />
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -1,0 +1,13 @@
+.annotation {
+  display: inline-block;
+  font-style: italic;
+  font-size: var(--smaller-font);
+  padding: 6px;
+  background-color: var(--background);
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.annotation p {
+  margin: 0;
+}

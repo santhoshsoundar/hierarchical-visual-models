@@ -1,0 +1,41 @@
+.App-sidebar {
+  padding: var(--content-padding);
+  background-color: var(--content-background);
+  border-radius: var(--content-border-rad);
+  position: sticky;
+  top: 1em;
+  height: calc(100vh - 4em);
+  width: var(--sidebar-width);
+  overflow-y: scroll;
+}
+
+.App-sidebar h3 {
+  line-height: 0.7em;
+  font-family: "PT Serif", serif;
+}
+
+.header-wrapper {
+  margin-bottom: 1em;
+}
+
+.header-title {
+  display: inline;
+}
+
+.header-icon {
+  margin-right: 5px;
+  color: var(--lighter-grey);
+}
+
+.header-meta {
+  font-size: var(--smaller-font);
+  font-family: "PT Serif", serif;
+  font-style: italic;
+}
+
+.selected-node {
+  color: skyblue;
+  margin: 0 0 20px 40px;
+  font-size: 16px;
+  font-weight: 600;
+}

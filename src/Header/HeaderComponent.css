@@ -1,0 +1,24 @@
+.App-header {
+  padding: var(--content-padding);
+  background-color: var(--content-background);
+  border-radius: var(--content-border-rad);
+}
+
+.App-header h2 {
+  line-height: 0.7em;
+  font-family: "PT Serif", serif;
+  display: inline-block;
+}
+
+.App-header .header-secondary {
+  margin-left: 1em;
+  font-size: var(--smaller-font);
+  font-family: "PT Serif", serif;
+  font-style: italic;
+}
+
+.header-content {
+  line-height: 1.5em;
+  font-size: var(--smaller-font);
+  font-family: "PT Serif", serif;
+}

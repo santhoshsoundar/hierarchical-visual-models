@@ -1,0 +1,21 @@
+.header-icon {
+  margin-right: 5px;
+  color: var(--lighter-grey);
+}
+
+.node-level-container {
+  min-height: 65px;
+}
+
+.node-level {
+  margin: 5px 0;
+  color: orange;
+}
+
+.node-highlight {
+  color: var(--dark-grey);
+  background-color: bisque;
+  padding: 0px 5px;
+  border-radius: 4px;
+  font-weight: 600;
+}

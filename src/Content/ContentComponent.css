@@ -1,0 +1,13 @@
+.App-content {
+  padding: var(--content-padding);
+  background-color: var(--content-background);
+  border-radius: var(--content-border-rad);
+  box-shadow: 0 5px 30px -15px rgba(0, 0, 0, 0.2);
+  border-color: var(--light-grey);
+  margin-top: 1em;
+}
+
+.App-content h3 {
+  line-height: 0.7em;
+  font-family: "PT Serif", serif;
+}

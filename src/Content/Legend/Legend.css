@@ -1,0 +1,9 @@
+.legend-item {
+  display: inline-block;
+  margin: 0 10px;
+  font-size: var(--smaller-font);
+}
+
+.marker {
+  margin-right: 5px;
+}
