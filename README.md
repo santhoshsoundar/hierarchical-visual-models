@@ -1,72 +1,11 @@
 # Hierarchical Visual Models
 
-A project that explore ways to improve accessibility and seek to build alternative ways to visualize hierarchical data visualizations.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/da032cbc-af87-4cb5-941e-162092bd9fd0/deploy-status)](https://app.netlify.com/sites/elated-brattain-2ed5f2/deploys)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### `an alternative approach with Hierarchical Tree + Levels of Abstrtaction`
 
-## Available Scripts
+This is a hierarchical tree representation of POI sequence A3 Destination data, that had its own unique character of having ~[10-20] nodes or leafs with multi level leaf metrics(size). So with the following hierarchical tree implements few different levels of abstraction to slice and dice the given data maintaining hierarchy. This is achieved with the help of user interactions with the tree nodes coupled with breakdown of corresponding data and depth of nodes.
 
-In the project directory, you can run:
+Other displays of hierarchical structures such as a Sunburst has its own set of chalenges such as: [1] Labels, very hard to represent. [2] Angles are hard to read. [3] Deeper slices are exagerated compared to inner levels.
 
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[Site Live at ->](elated-brattain-2ed5f2.netlify.com)
