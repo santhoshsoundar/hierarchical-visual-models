@@ -22,3 +22,16 @@
   font-size: var(--smaller-font);
   font-family: "PT Serif", serif;
 }
+
+.git-link {
+  margin: 0 10px;
+  text-decoration: none;
+  color: dodgerblue;
+}
+
+.git-link:hover {
+  color: orangered;
+}
+.git-link:visited {
+  color: skyblue;
+}

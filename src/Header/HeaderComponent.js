@@ -1,11 +1,21 @@
 import React from "react";
 import "./HeaderComponent.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCodeBranch } from "@fortawesome/free-solid-svg-icons";
 
 function HeaderComponent() {
   return (
     <header className="App-header">
       <h2>Hierarchical Visual Models</h2>
-      <span className="header-secondary"> an alternative approach</span>
+      <a
+        href={"https://github.com/santhoshsoundar/hierarchical-visual-models"}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="git-link"
+      >
+        [<FontAwesomeIcon icon={faCodeBranch} />]
+      </a>
+      <span className="header-secondary"> an alternative approach </span>
       <p className="header-content">
         This is a hierarchical tree representation of POI sequence A3
         Destination data, that had its own unique character of having ~[10-20]
