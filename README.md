@@ -9,3 +9,9 @@ This is a hierarchical tree representation of POI sequence A3 Destination data, 
 Other displays of hierarchical structures such as a Sunburst has its own set of chalenges such as: [1] Labels, very hard to represent. [2] Angles are hard to read. [3] Deeper slices are exagerated compared to inner levels.
 
 [Site Live at ->](elated-brattain-2ed5f2.netlify.com)
+
+### Run in local
+
+##### [1] Installing all dependencies: `yarn install`
+
+##### [2] In the project directory, running the app: : `yarn start`
