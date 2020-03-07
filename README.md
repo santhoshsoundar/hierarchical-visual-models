@@ -10,6 +10,8 @@ Other displays of hierarchical structures such as a Sunburst has its own set of 
 
 [Site Live at ->](elated-brattain-2ed5f2.netlify.com)
 
+![Screenshot](screenshot.png)
+
 ### Run in local
 
 ##### [1] Installing all dependencies: `yarn install`
