@@ -154,9 +154,19 @@ class Tree extends Component {
       .attr("dy", "0.31em")
       .attr("x", d => (d._children ? -8 : 8))
       .attr("text-anchor", d => (d._children ? "end" : "start"))
-      .text(d =>
-        d.data.size ? `${d.data.name} - ${d.data.size} ` : d.data.name
-      )
+      .text(d => d.data.name)
+      .clone(true)
+      .lower()
+      .attr("stroke-linejoin", "round")
+      .attr("stroke-width", 3)
+      .attr("stroke", "white");
+
+    nodeEnter
+      .append("text")
+      .attr("dy", "0.31em")
+      .attr("x", d => (d._children ? 0 : -12))
+      .attr("text-anchor", d => (d._children ? "start" : "end"))
+      .text(d => (d.data.size ? `${d.data.size}` : ""))
       .clone(true)
       .lower()
       .attr("stroke-linejoin", "round")
