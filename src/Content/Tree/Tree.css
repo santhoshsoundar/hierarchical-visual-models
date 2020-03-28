@@ -1,7 +1,22 @@
-.legend {
-  padding: 6px;
-  float: right;
+.legend,
+.legendLink {
   background-color: var(--background);
   border-radius: 4px;
   margin-bottom: 10px;
+}
+.legend {
+  padding: 6px;
+  float: right;
+}
+.legendLink {
+  float: left;
+}
+
+.heading {
+  display: inline-block;
+}
+
+.link {
+  fill: gray;
+  opacity: 0.4;
 }

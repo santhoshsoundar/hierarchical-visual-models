@@ -13,8 +13,8 @@ function OtherNodesList(props) {
         Other Sub-Tree Nodes
       </h3>
       <div className="subtree-nodes">
-        {subTreeNodes.map(d => {
-          return <div>{d}</div>;
+        {subTreeNodes.map((d, i) => {
+          return <div key={i}>{d}</div>;
         })}
       </div>
       {!isSubTreeExists && isNodeSelected && (

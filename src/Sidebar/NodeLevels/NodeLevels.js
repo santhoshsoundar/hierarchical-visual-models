@@ -19,8 +19,8 @@ function NodeLevels(props) {
         )}
         {nodeLevels.map((d, i) => {
           return (
-            <div className="node-level">
-              <Spacer amount={i * 5} />
+            <div className="node-level" key={i}>
+              <Spacer amount={(i + 1) * 5} />
               <span className="node-highlight">{d}</span>{" "}
               <FontAwesomeIcon icon={faChevronRight} />
             </div>

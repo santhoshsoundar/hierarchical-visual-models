@@ -5,7 +5,6 @@ import "./DonutChart.css";
 
 const width = 300,
   height = 150,
-  colorScale = d3.scaleOrdinal().range(d3.schemeTableau10),
   arcGenerator = d3
     .arc()
     .innerRadius(height * 0.65)
@@ -16,7 +15,8 @@ const width = 300,
     .endAngle(d => d.endAngle),
   legendRectSize = 14,
   legendSpacing = 4,
-  legendPadding = 10;
+  legendPadding = 10,
+  colorScale = d3.scaleOrdinal().range(d3.schemeTableau10);
 
 class DonutChart extends Component {
   state = {
@@ -24,8 +24,8 @@ class DonutChart extends Component {
     labels: []
   };
 
-  static getDerivedStateFromProps(nextProps) {
-    const { data } = nextProps;
+  static getDerivedStateFromProps(nextProps, previousState) {
+    let data = nextProps.data.reverse();
     if (!data) return {};
 
     const labels = data.map(d => d.name);
@@ -54,6 +54,7 @@ class DonutChart extends Component {
         .attr("stroke", "white")
         .attr("fill", (d, i) => colorScale(i));
 
+      // donut chart legend with rounded rects
       let legendG = svg
         .append("g")
         .attr("transform", `translate(${width / 5},${height + legendPadding})`);

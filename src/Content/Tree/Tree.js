@@ -10,10 +10,16 @@ const width = 832,
   palette = {
     subtreeNode: "skyblue",
     leafNode: "dodgerblue",
-    nodeFocus: "orangered",
+    nodeFocus: "pink",
     nodeSelected: "orangered"
   },
-  node_radius = 5,
+  colorScale = d3.scaleOrdinal().range(d3.schemeTableau10),
+  linkWidth = d3
+    .scaleLog()
+    .domain([1, 6000])
+    .range([1, 12])
+    .clamp(true),
+  node_radius = 6,
   node_levels = 4,
   dy = width / node_levels,
   dx = 20;
@@ -58,8 +64,17 @@ class Tree extends Component {
       root.descendants().forEach((d, i) => {
         d.id = i;
         d._children = d.children;
-        if (d.depth && d.data.name.length !== 7) d.children = null;
+        if (d.depth > 0) d.children = null;
       });
+
+      // Collapse the node and all it's children
+      function collapse(d) {
+        if (d.children && d.depth !== 1 && d.depth !== 0) {
+          d._children = d.children;
+          d._children.forEach(collapse);
+          d.children = null;
+        }
+      }
 
       return { data, root, svg, gLink, gNode };
     } else {
@@ -95,7 +110,10 @@ class Tree extends Component {
       );
 
     // Update the nodes…
-    const node = gNode.selectAll("g").data(nodes, d => d.id);
+    const node = gNode
+      .selectAll("g")
+      .attr("class", "node")
+      .data(nodes, d => d.id);
 
     // Enter any new nodes at the parent's previous position.
     const nodeEnter = node
@@ -110,10 +128,22 @@ class Tree extends Component {
         this.props.nodeClicked(d);
       });
 
+    node.selectAll("circle").attr("fill", d => {
+      return d._children ? palette.subtreeNode : palette.leafNode;
+    });
+
+    let palleteCouter = 0;
     nodeEnter
       .append("circle")
       .attr("r", node_radius)
-      .attr("fill", d => (d._children ? palette.subtreeNode : palette.leafNode))
+      .attr("fill", d => {
+        if (!d._children) {
+          let color = colorScale(palleteCouter);
+          palleteCouter++;
+          return color;
+        }
+        return palette.subtreeNode;
+      })
       .attr("stroke-width", 10)
       .attr("pointer-events", d => (d._children ? "all" : "none"))
       .on("mouseover", handleMouseOver)
@@ -124,7 +154,9 @@ class Tree extends Component {
       .attr("dy", "0.31em")
       .attr("x", d => (d._children ? -8 : 8))
       .attr("text-anchor", d => (d._children ? "end" : "start"))
-      .text(d => d.data.name)
+      .text(d =>
+        d.data.size ? `${d.data.name} - ${d.data.size} ` : d.data.name
+      )
       .clone(true)
       .lower()
       .attr("stroke-linejoin", "round")
@@ -135,7 +167,9 @@ class Tree extends Component {
     node
       .merge(nodeEnter)
       .transition(transition)
-      .attr("transform", d => `translate(${d.y},${d.x})`)
+      .attr("transform", d => {
+        return `translate(${d.y},${d.x})`;
+      })
       .attr("fill-opacity", 1)
       .attr("stroke-opacity", 1);
 
@@ -153,7 +187,7 @@ class Tree extends Component {
         d3.select(this)
           .transition()
           .duration(300)
-          .attr("r", 5)
+          .attr("r", node_radius)
           .attr("fill", palette.nodeFocus);
       }
     }
@@ -178,13 +212,27 @@ class Tree extends Component {
       .attr("d", d => {
         const o = { x: source.x0, y: source.y0 };
         return diagonal({ source: o, target: o });
-      });
+      })
+      .attr("stroke-width", d => {
+        if (!d.target._children) {
+          return linkWidth(d.target.data.size);
+        }
+        return 1;
+      })
+      .attr("stroke-opacity", 0.3);
 
     // Transition links to their new position.
     link
       .merge(linkEnter)
       .transition(transition)
-      .attr("d", diagonal);
+      .attr("d", diagonal)
+      .attr("stroke-width", d => {
+        if (!d.target._children) {
+          return linkWidth(d.target.data.size);
+        }
+        return 1;
+      })
+      .attr("stroke-opacity", 0.3);
 
     // Transition exiting nodes to the parent's new position.
     link
@@ -218,11 +266,61 @@ class Tree extends Component {
     }
   }
 
+  legendLinkStyle = { fill: "#444", rx: "5", opacity: 0.3 };
+
   render() {
     return (
       <div>
-        <h3>Hierarchical Tree </h3>
-        <Annotation annotationText="Click a tree node to expand or collapse the tree." />
+        <div>
+          <h3 class="heading">Hierarchical Tree </h3>
+          <Annotation annotationText="Click a tree node to expand or collapse the tree. Leaf links had size encoded on a 'log' scale." />
+        </div>
+        <div className="legendLink">
+          <svg width="330" height="28">
+            <g>
+              <rect
+                x="20"
+                y={15 - linkWidth(6000) / 2}
+                width="40"
+                height={linkWidth(6000)}
+                style={this.legendLinkStyle}
+              />
+              <text x="65" dy="1.6em" style={{ fontSize: "12px" }}>
+                6000
+              </text>
+              <rect
+                x="110"
+                y={15 - linkWidth(100) / 2}
+                width="40"
+                height={linkWidth(100)}
+                style={this.legendLinkStyle}
+              />
+              <text x="155" dy="1.6em" style={{ fontSize: "12px" }}>
+                100
+              </text>
+              <rect
+                x="190"
+                y={15 - linkWidth(25) / 2}
+                width="40"
+                height={linkWidth(25)}
+                style={this.legendLinkStyle}
+              />
+              <text x="235" dy="1.6em" style={{ fontSize: "12px" }}>
+                50
+              </text>
+              <rect
+                x="260"
+                y={15 - linkWidth(5) / 2}
+                width="40"
+                height={linkWidth(5)}
+                style={this.legendLinkStyle}
+              />
+              <text x="305" dy="1.6em" style={{ fontSize: "12px" }}>
+                5
+              </text>
+            </g>
+          </svg>
+        </div>
         <div className="legend">
           <Legend labelText={"Tree Node"} color={palette.subtreeNode} />
           <Legend labelText={"Leaf Node"} color={palette.leafNode} />

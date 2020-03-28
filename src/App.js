@@ -15,6 +15,23 @@ class App extends Component {
   componentDidMount() {
     fetch(`${process.env.PUBLIC_URL || ""}/data/poi_sequences.json`)
       .then(res => res.json())
+      .then(res => {
+        // function traverse(node) {
+        //   if (node.children) {
+        //     if (node.children.map(d => d.size).length > 1) {
+        //       let leafNodes = node.children;
+        //       node.children = [];
+        //       node.children = leafNodes.sort((a, b) => a.size - b.size);
+        //     } else {
+        //       node.children.forEach(node => {
+        //         traverse(node);
+        //       });
+        //     }
+        //   }
+        // }
+        // traverse(res.report.data);
+        return res;
+      })
       .then(
         result => {
           this.setState({
