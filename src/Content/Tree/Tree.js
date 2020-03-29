@@ -283,7 +283,10 @@ class Tree extends Component {
       <div>
         <div>
           <h3 class="heading">Hierarchical Tree </h3>
-          <Annotation annotationText="Click a tree node to expand or collapse the tree. Leaf links had size encoded on a 'log' scale." />
+          <Annotation
+            class="annotation"
+            annotationText="Click a tree node to expand or collapse the tree. Leaf links had size encoded on a 'log' scale."
+          />
         </div>
         <div className="legendLink">
           <svg width="330" height="28">
