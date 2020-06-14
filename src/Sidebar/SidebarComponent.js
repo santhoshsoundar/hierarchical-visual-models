@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartPie } from "@fortawesome/free-solid-svg-icons";
-import DonutChart from "./Donut/DonutChart";
-import Annotation from "../Components/Annotation/Annotation";
-import Divider from "../Components/Divider/Divider";
 import NodeLevels from "./NodeLevels/NodeLevels";
 import OtherNodesList from "./OtherNodesList/OtherNodesList";
 import "./SidebarComponent.css";
+import SizesBreakdown from "./SizesBreakdown/SizesBreakdown";
 
 class Sidebar extends Component {
   state = {
@@ -15,7 +11,7 @@ class Sidebar extends Component {
     children: [],
     nodeLevels: [],
     leafNodes: [],
-    subTreeNodes: []
+    subTreeNodes: [],
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -39,8 +35,10 @@ class Sidebar extends Component {
       nodeLevels.push(parent);
       nodeLevels.push(node.name);
     }
-    let leafNodes = children.filter(d => !d._children).map(d => d.data),
-      subTreeNodes = children.filter(d => d._children).map(d => d.data.name);
+    let leafNodes = children.filter((d) => !d._children).map((d) => d.data),
+      subTreeNodes = children
+        .filter((d) => d._children)
+        .map((d) => d.data.name);
 
     return { node, parent, children, nodeLevels, leafNodes, subTreeNodes };
   }
@@ -52,21 +50,11 @@ class Sidebar extends Component {
     return (
       <div className="App-sidebar">
         <NodeLevels isNodeSelected={isNodeSelected} nodeLevels={nodeLevels} />
-        <div className="header-wrapper">
-          <h3 className="header-title">
-            <FontAwesomeIcon icon={faChartPie} className="header-icon" /> Sizes
-            Breakdown{" "}
-          </h3>
-          {!isNodeSelected && (
-            <span className="header-meta"> [leaf order retained]</span>
-          )}
-        </div>
-        {isNodeSelected && (
-          <Annotation annotationText={"make a node selection"} />
-        )}
-        {!isNodeSelected && <h5 className="selected-node">{node.name}</h5>}
-        {!isNodeSelected && <DonutChart data={leafNodes} />}
-        <Divider />
+        <SizesBreakdown
+          isNodeSelected={isNodeSelected}
+          node={node}
+          leafNodes={leafNodes}
+        />
         <OtherNodesList
           isNodeSelected={isNodeSelected}
           isSubTreeExists={isSubTreeExists}

@@ -1,5 +1,6 @@
 .annotation {
-  display: inline-block;
+  float: right;
+  margin-top: 10px;
   font-style: italic;
   font-size: var(--smaller-font);
   padding: 6px;

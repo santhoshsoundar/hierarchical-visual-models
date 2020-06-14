@@ -1,10 +1,5 @@
-.header-icon {
-  margin-right: 5px;
-  color: var(--lighter-grey);
-}
-
 .subtree-nodes {
-  color: skyblue;
+  color: var(--text-heighlight);
   margin: 0 0 20px 40px;
   font-size: var(--smaller-font);
   font-weight: 400;

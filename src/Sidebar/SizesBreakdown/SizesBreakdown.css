@@ -1,0 +1,18 @@
+.header-meta {
+  font-size: var(--smaller-font);
+  font-family: "PT Serif", serif;
+  font-style: italic;
+  float: right;
+}
+
+.sizes-annotation {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.selected-node {
+  color: skyblue;
+  margin: 20px 40px;
+  font-size: 16px;
+  font-weight: 600;
+}

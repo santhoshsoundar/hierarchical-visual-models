@@ -9,48 +9,31 @@ class App extends Component {
     data: {},
     idLoaded: false,
     nodeSubtreeData: null,
-    error: null
+    error: null,
   };
 
   componentDidMount() {
     fetch(`${process.env.PUBLIC_URL || ""}/data/poi_sequences.json`)
-      .then(res => res.json())
-      .then(res => {
-        // function traverse(node) {
-        //   if (node.children) {
-        //     if (node.children.map(d => d.size).length > 1) {
-        //       let leafNodes = node.children;
-        //       node.children = [];
-        //       node.children = leafNodes.sort((a, b) => a.size - b.size);
-        //     } else {
-        //       node.children.forEach(node => {
-        //         traverse(node);
-        //       });
-        //     }
-        //   }
-        // }
-        // traverse(res.report.data);
-        return res;
-      })
+      .then((res) => res.json())
       .then(
-        result => {
+        (result) => {
           this.setState({
             isLoaded: true,
-            data: result.report.data
+            data: result.report.data,
           });
         },
-        error => {
+        (error) => {
           this.setState({
             isLoaded: true,
-            error
+            error,
           });
         }
       );
   }
 
-  updateNodeSubtree = treeData => {
+  updateNodeSubtree = (treeData) => {
     this.setState({
-      nodeSubtreeData: treeData
+      nodeSubtreeData: treeData,
     });
   };
 

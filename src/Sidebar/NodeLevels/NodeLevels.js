@@ -11,7 +11,8 @@ function NodeLevels(props) {
   return (
     <React.Fragment>
       <h3>
-        <FontAwesomeIcon icon={faSitemap} className="header-icon" /> Node Levels
+        <FontAwesomeIcon icon={faSitemap} className="sidebar-title-icon" /> Node
+        Levels
       </h3>
       <div className="node-level-container">
         {isNodeSelected && (

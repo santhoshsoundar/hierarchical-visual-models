@@ -9,7 +9,10 @@ function OtherNodesList(props) {
   return (
     <React.Fragment>
       <h3>
-        <FontAwesomeIcon icon={faProjectDiagram} className="header-icon" />
+        <FontAwesomeIcon
+          icon={faProjectDiagram}
+          className="sidebar-title-icon"
+        />
         Other Sub-Tree Nodes
       </h3>
       <div className="subtree-nodes">

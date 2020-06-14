@@ -16,11 +16,6 @@
   display: inline-block;
 }
 
-.annotation {
-  float: right;
-  margin-top: 10px;
-}
-
 .link {
   fill: gray;
   opacity: 0.4;
